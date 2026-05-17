@@ -17,7 +17,7 @@
     --muted-2: #A8A498;
     --line: #D9D5C8;
     --line-2: #C7C2B2;
-    --accent: #C2533A;
+    --accent: #C2533A; /* warm terracotta */
     --accent-soft: #E8C9BF;
     --card: #FBFAF6;
   }
@@ -46,6 +46,7 @@
     .wrap { padding: 0 20px; }
   }
 
+  /* Reusable */
   .hair { background: var(--line); height: 1px; width: 100%; border: 0; }
   .label {
     font-family: 'Geist Mono', ui-monospace, monospace;
@@ -121,6 +122,7 @@
   h3 { font-size: 22px; line-height: 1.2; }
   p  { margin: 0; line-height: 1.55; color: var(--ink-2); }
 
+  /* ----- Header ----- */
   header.nav {
     position: sticky; top: 0; z-index: 50;
     background: color-mix(in oklab, var(--bg) 86%, transparent);
@@ -173,6 +175,7 @@
     .nav-links a:not(.nav-cta) { display: none; }
   }
 
+  /* ----- Hero ----- */
   .hero {
     padding: 88px 0 120px;
     position: relative;
@@ -195,7 +198,9 @@
     display: flex; gap: 16px; align-items: center;
     margin-bottom: 36px;
   }
-  .hero h1 { max-width: 22ch; }
+  .hero h1 {
+    max-width: 22ch;
+  }
   .hero h1 em {
     font-style: normal;
     color: var(--accent);
@@ -213,7 +218,47 @@
     margin-top: 40px;
     display: flex; gap: 12px; flex-wrap: wrap;
   }
+  .hero-stats {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-stats > div {
+    background: var(--bg);
+    padding: 22px 4px 18px 0;
+  }
+  .hero-stats .k {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .hero-stats .v {
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    line-height: 1;
+  }
+  .hero-stats .v small {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'Geist Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 720px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  }
 
+  /* ----- Services ----- */
   .services-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -241,7 +286,10 @@
     color: var(--muted);
     letter-spacing: 0.06em;
   }
-  .svc h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+  .svc h3 {
+    font-size: 20px; font-weight: 500;
+    letter-spacing: -0.01em;
+  }
   .svc p { font-size: 15px; color: var(--ink-2); }
   .svc ul {
     list-style: none; padding: 0; margin: 14px 0 0;
@@ -274,6 +322,7 @@
     color: var(--ink-2);
   }
 
+  /* ----- AI section ----- */
   .ai-section {
     background: var(--ink);
     color: var(--bg);
@@ -303,6 +352,7 @@
     max-width: 52ch;
   }
 
+  /* Mock chat panel */
   .chat-panel {
     background: #1E1C17;
     border: 1px solid #2E2C26;
@@ -324,7 +374,9 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
-  .chat-head .dots { display: flex; gap: 4px; }
+  .chat-head .dots {
+    display: flex; gap: 4px;
+  }
   .chat-head .dots span {
     width: 6px; height: 6px; border-radius: 50%;
     background: #3A372F;
@@ -401,12 +453,63 @@
   }
   .ai-step p { font-size: 14px; color: #B5B1A4; line-height: 1.55; }
 
+  /* Code preview */
+  .code-block {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .code-block { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .code-block .copy h3 {
+    font-size: 26px; color: var(--bg);
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+  }
+  .code-window {
+    background: #1B1914;
+    border: 1px solid #2E2C26;
+    border-radius: 14px;
+    overflow: hidden;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+  }
+  .code-window .bar {
+    padding: 10px 14px;
+    background: #14130F;
+    border-bottom: 1px solid #2E2C26;
+    display: flex; gap: 8px; align-items: center;
+  }
+  .code-window .bar .file {
+    font-size: 11px;
+    color: var(--muted-2);
+    letter-spacing: 0.06em;
+  }
+  .code-window pre {
+    margin: 0;
+    padding: 18px 20px 22px;
+    color: #D9D5C8;
+    line-height: 1.65;
+    overflow-x: auto;
+  }
+  .code-window .k  { color: #E8A87C; } /* key/orange */
+  .code-window .s  { color: #BFD6A8; } /* string/green */
+  .code-window .c  { color: #6F6A5C; font-style: italic; }
+  .code-window .p  { color: #6F6A5C; }
+
+  /* ----- Pricing ----- */
   .price-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    max-width: 480px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  @media (max-width: 760px) {
+    .price-grid { grid-template-columns: 1fr; }
   }
   .price {
     background: var(--card);
@@ -414,8 +517,8 @@
     border-radius: 14px;
     padding: 32px 28px 28px;
     display: flex; flex-direction: column;
+    min-height: 480px;
     transition: transform .2s ease, border-color .2s ease;
-    min-height: 580px;
   }
   .price:hover { border-color: var(--ink-2); }
   .price.featured {
@@ -425,14 +528,23 @@
     position: relative;
   }
   .price.featured p { color: #BDB9AD; }
+  .price.featured .ribbon {
+    position: absolute; top: -10px; right: 20px;
+    background: var(--accent); color: #fff;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; letter-spacing: 0.06em;
+    padding: 4px 10px; border-radius: 6px;
+    text-transform: uppercase;
+  }
   .price .tier {
     font-family: 'Geist Mono', monospace;
     font-size: 11px;
-    color: var(--accent-soft);
+    color: var(--muted);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 18px;
   }
+  .price.featured .tier { color: var(--accent-soft); }
   .price h3 {
     font-size: 28px;
     font-weight: 500;
@@ -440,8 +552,9 @@
     margin-bottom: 8px;
   }
   .price > p.tagline {
-    font-size: 14px; color: #9F9B8F; margin-bottom: 20px;
+    font-size: 14px; color: var(--muted); margin-bottom: 20px;
   }
+  .price.featured > p.tagline { color: #9F9B8F; }
   .price .amount {
     display: flex; align-items: baseline; gap: 8px;
     margin: 4px 0 18px;
@@ -452,25 +565,26 @@
     letter-spacing: -0.03em;
     font-weight: 500;
     line-height: 1;
-    color: var(--bg);
+    color: var(--ink);
   }
+  .price.featured .amount .big { color: var(--bg); }
   .price .amount .sub {
     font-family: 'Geist Mono', monospace;
     font-size: 12px;
-    color: #9F9B8F;
+    color: var(--muted);
     letter-spacing: 0.02em;
   }
+  .price.featured .amount .sub { color: #9F9B8F; }
   .price .amount .plus {
     font-family: 'Geist Mono', monospace;
     font-size: 13px;
-    color: var(--accent-soft);
+    color: var(--accent);
     letter-spacing: 0.04em;
-    width: 100%;
-    margin-top: 4px;
   }
   .price hr {
-    border: 0; height: 1px; background: #2E2C26; margin: 0 0 20px;
+    border: 0; height: 1px; background: var(--line); margin: 0 0 20px;
   }
+  .price.featured hr { background: #2E2C26; }
   .price ul {
     list-style: none; padding: 0; margin: 0 0 24px;
     display: flex; flex-direction: column; gap: 10px;
@@ -479,10 +593,11 @@
   .price li {
     font-size: 14px;
     display: flex; gap: 10px; align-items: baseline;
-    color: #D9D5C8;
+    color: var(--ink-2);
   }
+  .price.featured li { color: #D9D5C8; }
   .price li::before {
-    content: "\2713";
+    content: "✓";
     color: var(--accent);
     font-size: 12px;
     font-weight: 600;
@@ -491,16 +606,25 @@
   .price .btn-line {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 12px 16px;
+    border: 1px solid var(--ink);
     border-radius: 8px;
-    background: var(--accent); color: #fff; border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--ink);
     font-size: 14px; font-weight: 500;
     text-align: center;
     justify-content: center;
     transition: background .2s, color .2s;
   }
-  .price .btn-line:hover { background: var(--bg); color: var(--ink); border-color: var(--bg); }
+  .price .btn-line:hover { background: var(--ink); color: var(--bg); }
+  .price.featured .btn-line {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+  }
+  .price.featured .btn-line:hover { background: var(--bg); color: var(--ink); border-color: var(--bg); }
 
-  .reviews-wrap { position: relative; }
+  /* ----- Reviews ----- */
+  .reviews-wrap {
+    position: relative;
+  }
   .reviews-track {
     position: relative;
     overflow: hidden;
@@ -514,7 +638,7 @@
     animation: scroll-x 60s linear infinite;
     width: max-content;
   }
-  .reviews-wrap:hover .reviews-row { animation-play-state: paused; }
+
   @keyframes scroll-x {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -563,6 +687,7 @@
   .reviews-fade.l { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
   .reviews-fade.r { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
 
+  /* ----- Contact / Footer ----- */
   .contact {
     padding: 120px 0 80px;
     border-top: 1px solid var(--line);
@@ -603,7 +728,10 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
-  .contact-row .v { font-size: 15px; color: var(--ink); }
+  .contact-row .v {
+    font-size: 15px;
+    color: var(--ink);
+  }
   .contact-row a.v:hover { color: var(--accent); }
 
   footer.foot {
@@ -623,6 +751,7 @@
     .foot-inner { flex-direction: column; gap: 10px; }
   }
 
+  /* fade-in on load */
   .fade-up {
     opacity: 0; transform: translateY(12px);
     animation: fadeUp .8s ease forwards;
@@ -641,7 +770,6 @@
       <span>DekSites</span>
     </a>
     <nav class="nav-links">
-      <a href="#services">Services</a>
       <a href="#ai">AI Search</a>
       <a href="#pricing">Pricing</a>
       <a href="#reviews">Reviews</a>
@@ -652,77 +780,35 @@
 
 <main id="top">
 
+  <!-- HERO -->
   <section class="hero hero-grid">
     <div class="wrap" style="position: relative;">
       <h1 class="fade-up" style="animation-delay: .12s">
         Built to be found on Google. <em>Built to be recommended by AI.</em>
       </h1>
+
       <p class="hero-sub fade-up" style="animation-delay: .22s">
         I build clean, fast websites for plumbers, restaurants, law firms, and other local businesses. Real SEO baked in, plus an optional layer that makes you findable when customers ask AI assistants for a recommendation.
       </p>
+
       <div class="hero-ctas fade-up" style="animation-delay: .3s">
-        <a href="#contact" class="btn">Start a project <span class="arrow">&rarr;</span></a>
+        <a href="#contact" class="btn">Start a project <span class="arrow">→</span></a>
         <a href="#ai" class="btn ghost">How AI search changes things</a>
       </div>
+
     </div>
   </section>
 
-  <section class="section" id="services">
-    <div class="wrap">
-      <div class="eyebrow">
-        <span class="num">01</span>
-        <span class="ttl">What I do</span>
-        <span class="line"></span>
-      </div>
-      <div class="section-head">
-        <h2>Websites that look right, load fast, and bring in work.</h2>
-        <p class="lede">No drag-and-drop templates. No bloated page builders. Every site is hand-built so it looks distinctive, ranks well, and stays out of your way.</p>
-      </div>
-      <div class="services-grid">
-        <div class="svc">
-          <div class="num">01 &mdash; Design</div>
-          <h3>Considered, custom design</h3>
-          <p>Layouts and typography built around your business, not pulled from a template gallery. Looks like you, not like everyone else on Main Street.</p>
-          <ul>
-            <li>Custom visual direction</li>
-            <li>Mobile-first layout</li>
-            <li>Photography &amp; copy direction</li>
-            <li>Brand-aligned components</li>
-          </ul>
-        </div>
-        <div class="svc">
-          <div class="num">02 &mdash; Build</div>
-          <h3>Fast, hand-coded sites</h3>
-          <p>Built on modern, lightweight tooling so pages load instantly. No theme bloat, no plugin tax, no random updates breaking your site.</p>
-          <ul>
-            <li>Sub-second load times</li>
-            <li>Image &amp; font optimization</li>
-            <li>Hosting + domain setup</li>
-            <li>Ongoing small edits included</li>
-          </ul>
-        </div>
-        <div class="svc">
-          <div class="num">03 &mdash; SEO</div>
-          <h3>SEO that actually ships</h3>
-          <p>Every site gets the fundamentals done right at launch. Meta tags, sitemaps, structured data, Google Search Console, the works.</p>
-          <ul>
-            <li>Meta &amp; OpenGraph tags</li>
-            <li>Schema markup for local business</li>
-            <li>XML sitemap &amp; robots.txt</li>
-            <li>Google indexing &amp; analytics</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- SERVICES -->
+  <!-- AI SECTION -->
   <section class="section ai-section" id="ai">
     <div class="wrap">
       <div class="eyebrow">
-        <span class="num">02</span>
+        <span class="num">01</span>
         <span class="ttl">AI Search Optimization</span>
         <span class="line"></span>
       </div>
+
       <div class="ai-hero">
         <div>
           <h2>Your customers stopped Googling. <span class="accent">They started asking.</span></h2>
@@ -733,15 +819,18 @@
             I make your business legible to those assistants. Same site, same brand, with the structure and signals AI models look for when they pick who to cite.
           </p>
         </div>
+
         <div class="chat-panel" id="aiChat">
           <div class="chat-head">
-            <span class="who">claude.ai &middot; prompt</span>
+            <span class="who">claude.ai · prompt</span>
             <div class="dots"><span></span><span></span><span></span></div>
           </div>
           <div class="chat-q" id="chatQ"></div>
           <div class="chat-a" id="chatA"></div>
         </div>
       </div>
+
+      <!-- 3-step explainer -->
       <div class="ai-explain">
         <div class="ai-step">
           <div class="step-n">step 01</div>
@@ -762,66 +851,78 @@
     </div>
   </section>
 
+  <!-- PRICING -->
   <section class="section" id="pricing">
     <div class="wrap">
       <div class="eyebrow">
-        <span class="num">03</span>
-        <span class="ttl">Pricing</span>
+        <span class="num">02</span>
+        <span class="ttl">Packages</span>
         <span class="line"></span>
       </div>
+
       <div class="section-head">
         <h2>Simple pricing. Two options.</h2>
-        <p class="lede">A website that works, and an add-on that makes AI recommend you. Every project starts with a quick scoping call.</p>
+        <p class="lede">Both get you a custom website. The second one makes sure AI recommends you too.</p>
       </div>
-      <div style="max-width: 560px; margin: 0 auto;">
-        <div class="price featured">
-          <div class="tier">Custom website</div>
-          <h3>Your business, online and findable.</h3>
-          <p class="tagline">Hand-built, mobile-first, SEO baked in. No templates.</p>
+
+      <div class="price-grid">
+        <div class="price">
+          <div class="tier">Tier 01</div>
+          <h3>Essentials</h3>
+          <p class="tagline">A clean, modern site that gets you found on Google.</p>
           <div class="amount">
-            <span class="big">$400</span>
+            <span class="big">$250</span>
             <span class="sub">one-time build</span>
+          </div>
+          <div class="amount" style="margin-top: 0;">
             <span class="plus">+ $50/mo hosting &amp; maintenance</span>
           </div>
           <hr/>
           <ul>
             <li>Custom multi-page design</li>
             <li>Mobile and tablet responsive</li>
-            <li>Full technical SEO + schema markup</li>
+            <li>Basic SEO + schema markup</li>
             <li>Google Analytics &amp; Search Console</li>
             <li>Domain &amp; hosting handled</li>
             <li>Ongoing small edits included</li>
-            <li>First 3 months of hosting included</li>
           </ul>
-          <a href="#contact" class="btn-line">Start a project <span>&rarr;</span></a>
+          <a href="#contact" class="btn-line">Get in touch <span>→</span></a>
         </div>
 
-        <div style="margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 28px 28px 24px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;">
-          <div>
-            <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;">Add-on</div>
-            <h3 style="font-size: 24px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 6px;">+ AI Search Optimization</h3>
-            <p style="font-size: 14px; color: var(--muted); margin-bottom: 14px;">Get recommended by ChatGPT, Claude, Perplexity, and Gemini.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--ink-2);">
-              <span>&#10003; llms.txt + structured data</span>
-              <span>&#10003; JSON-LD across every page</span>
-              <span>&#10003; AI-ready content rewrites</span>
-              <span>&#10003; Off-site signal alignment</span>
-            </div>
+        <div class="price featured">
+          <div class="ribbon">Most asked for</div>
+          <div class="tier">Tier 02</div>
+          <h3>Essentials + AI SEO</h3>
+          <p class="tagline">Everything in Tier 01, plus AI recommends your business.</p>
+          <div class="amount">
+            <span class="big">$500</span>
+            <span class="sub">one-time build</span>
           </div>
-          <div style="text-align: right; flex-shrink: 0;">
-            <div style="font-size: 36px; font-weight: 500; letter-spacing: -0.03em; line-height: 1;">$700</div>
-            <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 4px;">+ $100/mo optimization</div>
-            <a href="#contact" style="display: inline-block; margin-top: 14px; padding: 10px 18px; border: 1px solid var(--ink); border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--ink); transition: background .2s, color .2s;">Get in touch &rarr;</a>
+          <div class="amount" style="margin-top: 0;">
+            <span class="plus">+ $150/mo hosting, maintenance &amp; optimization</span>
           </div>
+          <hr/>
+          <ul>
+            <li>Everything in Essentials</li>
+            <li>llms.txt file for AI</li>
+            <li>JSON-LD structured data across every page</li>
+            <li>AI-optimized FAQ content</li>
+            <li>Sitemap &amp; robots.txt for AI crawlers</li>
+            <li>Service &amp; location pages tuned for prompts</li>
+            <li>Off-site signal alignment (NAP, directories)</li>
+            <li>Be visible for ChatGPT, Claude, Perplexity &amp; Gemini</li>
+          </ul>
+          <a href="#contact" class="btn-line">Get in touch <span>→</span></a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- REVIEWS -->
   <section class="section" id="reviews" style="padding-bottom: 64px;">
     <div class="wrap">
       <div class="eyebrow">
-        <span class="num">04</span>
+        <span class="num">03</span>
         <span class="ttl">What clients say</span>
         <span class="line"></span>
       </div>
@@ -830,19 +931,21 @@
         <p class="lede">A few words from the people I've worked with. Pause the row by hovering.</p>
       </div>
     </div>
+
     <div class="reviews-wrap">
       <div class="reviews-fade l"></div>
       <div class="reviews-fade r"></div>
       <div class="reviews-track">
-        <div class="reviews-row" id="reviewsRow"></div>
+        <div class="reviews-row" id="reviewsRow"><!-- populated by JS --></div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="wrap">
       <div class="eyebrow" style="margin-bottom: 40px;">
-        <span class="num">05</span>
+        <span class="num">04</span>
         <span class="ttl">Get in touch</span>
         <span class="line"></span>
       </div>
@@ -851,10 +954,11 @@
           <h2>Tell me about your business. I'll tell you what I'd build.</h2>
           <p class="sub">A short email or a 20-minute call. I'll come back with a plan and timeline within a day. No agency pitch deck, no upsell call series.</p>
           <div style="margin-top: 32px;">
-            <a class="btn" data-em="1" data-l="Email " data-show="1">Email <span class="arrow">&rarr;</span></a>
-            <a href="tel:+17027551163" class="btn ghost" style="margin-left: 8px;">Or call (702) 755-1163 <span class="arrow">&rarr;</span></a>
+            <a class="btn" data-em="1" data-l="Email " data-show="1">Email <span class="arrow">→</span></a>
+            <a href="tel:+17027551163" class="btn ghost" style="margin-left: 8px;">Or call (702) 755-1163 <span class="arrow">→</span></a>
           </div>
         </div>
+
         <div class="contact-card">
           <div class="contact-row">
             <span class="k">Email</span>
@@ -870,8 +974,9 @@
           </div>
           <div class="contact-row">
             <span class="k">Based in</span>
-            <span class="v">Las Vegas, NV</span>
+            <span class="v">Reno, NV · works with US clients</span>
           </div>
+
         </div>
       </div>
     </div>
@@ -879,9 +984,8 @@
 
   <footer class="foot">
     <div class="wrap foot-inner">
-      <div>&copy; 2026 DekSites. Built by hand.</div>
+      <div>© 2026 DekSites. Built by hand in Reno, NV.</div>
       <div style="display: flex; gap: 24px;">
-        <a href="#services">Services</a>
         <a href="#ai">AI Search</a>
         <a href="#pricing">Pricing</a>
         <a data-em="1" data-l="Contact">Contact</a>
@@ -892,37 +996,97 @@
 </main>
 
 <script>
+  // ===== Reviews data =====
   const REVIEWS = [
-    { quote: "Our old site looked like 2009. The new one looks like we actually care about the business. Phone hasn't stopped since we launched.", who: "Owner", from: "Boise, ID", biz: "Auto body shop" },
-    { quote: "The AI search piece is the real story. When my neighbor asked ChatGPT for a plumber, we came up first. That has never happened with Google ads.", who: "Owner", from: "Las Vegas, NV", biz: "Plumbing & drain" },
-    { quote: "Calm, organized, and the site shipped two weeks ahead of when he said it would. The whole thing felt unusually painless.", who: "Managing Partner", from: "Austin, TX", biz: "Family law firm" },
-    { quote: "He rewrote our menu page and the next week we had three new catering inquiries. I don't fully understand what he did, but it works.", who: "Chef-Owner", from: "Portland, OR", biz: "Neighborhood bistro" },
-    { quote: "Wealth clients judge a firm by its website in about four seconds. Ours now reads as serious. Several prospects mentioned it on intake calls.", who: "Advisor", from: "Charlotte, NC", biz: "Wealth management" },
-    { quote: "Fast, mobile-friendly, and finally something my customers can actually find. Worth every cent.", who: "Owner", from: "Tucson, AZ", biz: "HVAC & cooling" },
-    { quote: "I asked Perplexity for the best dentist in town and our practice came up with a direct citation to our services page. Patients are mentioning it.", who: "Dr.", from: "Madison, WI", biz: "Dental practice" },
-    { quote: "He talked me out of the features I didn't need and built the ones I did. Refreshing to work with someone who isn't trying to inflate the invoice.", who: "Founder", from: "Asheville, NC", biz: "Roofing contractor" }
+    {
+      quote: "Our old site looked like 2009. The new one looks like we actually care about the business. Phone hasn't stopped since we launched.",
+      who: "Owner",
+      from: "Boise, ID",
+      biz: "Auto body shop"
+    },
+    {
+      quote: "The AI search piece is the real story. When my neighbor asked ChatGPT for a plumber, we came up first. That has never happened with Google ads.",
+      who: "Owner",
+      from: "Las Vegas, NV",
+      biz: "Plumbing & drain"
+    },
+    {
+      quote: "Calm, organized, and the site shipped two weeks ahead of when he said it would. The whole thing felt unusually painless.",
+      who: "Managing Partner",
+      from: "Austin, TX",
+      biz: "Family law firm"
+    },
+    {
+      quote: "He rewrote our menu page and the next week we had three new catering inquiries. I don't fully understand what he did, but it works.",
+      who: "Chef-Owner",
+      from: "Portland, OR",
+      biz: "Neighborhood bistro"
+    },
+    {
+      quote: "Wealth clients judge a firm by its website in about four seconds. Ours now reads as serious. Several prospects mentioned it on intake calls.",
+      who: "Advisor",
+      from: "Charlotte, NC",
+      biz: "Wealth management"
+    },
+    {
+      quote: "Fast, mobile-friendly, and finally something my customers can actually find. Worth every cent.",
+      who: "Owner",
+      from: "Tucson, AZ",
+      biz: "HVAC & cooling"
+    },
+    {
+      quote: "I asked Perplexity for the best dentist in town and our practice came up with a direct citation to our services page. Patients are mentioning it.",
+      who: "Dr.",
+      from: "Madison, WI",
+      biz: "Dental practice"
+    },
+    {
+      quote: "He talked me out of the features I didn't need and built the ones I did. Refreshing to work with someone who isn't trying to inflate the invoice.",
+      who: "Founder",
+      from: "Asheville, NC",
+      biz: "Roofing contractor"
+    }
   ];
 
   function reviewCard(r) {
-    return `<article class="review"><p class="quote">"\u200B${r.quote}"</p><div class="meta"><div><div class="who">${r.who} <span>from ${r.from}</span></div><div class="biz">${r.biz}</div></div><div class="stars">\u2605\u2605\u2605\u2605\u2605</div></div></article>`;
+    return `
+      <article class="review">
+        <p class="quote">"${r.quote}"</p>
+        <div class="meta">
+          <div>
+            <div class="who">${r.who} <span>from ${r.from}</span></div>
+            <div class="biz">${r.biz}</div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </article>`;
   }
-  document.getElementById('reviewsRow').innerHTML = (REVIEWS.concat(REVIEWS)).map(reviewCard).join('');
 
-  const Q = 'best plumber in las vegas?';
-  const A = 'Based on response time, licensing and consistent customer reviews, a strong pick is <span class="cite">Sierra Plumbing &amp; Drain</span>. Family-owned since 1998, 24/7 emergency service, average on-site arrival under 60 minutes inside city limits, NV C-1 licensed.';
+  // duplicate for seamless loop
+  const row = document.getElementById('reviewsRow');
+  row.innerHTML = (REVIEWS.concat(REVIEWS)).map(reviewCard).join('');
+
+  // ===== AI chat typewriter =====
+  const Q = `best plumber in las vegas?`;
+  const A = `Based on response time, licensing and consistent customer reviews, a strong pick is <span class="cite">Sierra Plumbing &amp; Drain</span>. Family-owned since 1998, 24/7 emergency service, average on-site arrival under 60 minutes inside city limits, NV C-1 licensed.`;
+
   const qEl = document.getElementById('chatQ');
   const aEl = document.getElementById('chatA');
 
   function typeInto(el, html, speed, cb) {
+    // type plaintext but keep tags atomic
     let i = 0;
     const tokens = [];
+    // split HTML into tokens: tags and chars
     const re = /(<[^>]+>)|([\s\S])/g;
     let m;
     while ((m = re.exec(html)) !== null) tokens.push(m[1] || m[2]);
+
     function tick() {
       if (i >= tokens.length) { cb && cb(); return; }
       const t = tokens[i++];
       el.innerHTML += t;
+      // if it's a tag, no delay; otherwise pause
       if (t.startsWith && t.startsWith('<')) tick();
       else setTimeout(tick, speed);
     }
@@ -943,15 +1107,20 @@
     });
   }
 
+  // start when scrolled into view
   const chatPanel = document.getElementById('aiChat');
   let started = false;
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting && !started) { started = true; runChat(); }
+      if (e.isIntersecting && !started) {
+        started = true;
+        runChat();
+      }
     });
   }, { threshold: 0.3 });
   io.observe(chatPanel);
 
+  // build email links at runtime to defeat scrapers / proxy obfuscation
   (function(){
     var u = ['dekelreg','gmail','com'];
     var addr = u[0] + '\u0040' + u[1] + '.' + u[2];
@@ -969,6 +1138,7 @@
     });
   })();
 
+  // smooth-scroll anchor links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href').slice(1);
