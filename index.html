@@ -1348,7 +1348,7 @@
   //    Submissions arrive at the email you used to register.
   // 2) If left as 'YOUR_WEB3FORMS_ACCESS_KEY' the form gracefully falls back
   //    to opening the visitor's mail client with all answers pre-filled.
-  const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+  const WEB3FORMS_KEY = '83313707-1542-451e-b6ff-ce3ec4a3df75';
   const FALLBACK_EMAIL = 'dekelreg' + '\u0040' + 'gmail.com';
 
   (function initForm() {
@@ -1420,7 +1420,7 @@
       if (!validate()) return;
       if (form.botcheck && form.botcheck.checked) return;
 
-      if (!WEB3FORMS_KEY || WEB3FORMS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+      if (!WEB3FORMS_KEY || WEB3FORMS_KEY === '83313707-1542-451e-b6ff-ce3ec4a3df75') {
         window.location.href = buildMailto();
         return;
       }
