@@ -1420,7 +1420,7 @@
       if (!validate()) return;
       if (form.botcheck && form.botcheck.checked) return;
 
-      if (!WEB3FORMS_KEY || WEB3FORMS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY'') {
+      if (!WEB3FORMS_KEY || WEB3FORMS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
         window.location.href = buildMailto();
         return;
       }
