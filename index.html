@@ -932,7 +932,6 @@ src="https://www.facebook.com/tr?id=1356622849657315&ev=PageView&noscript=1"
     <nav class="nav-links">
       <a href="#ai">AI Search</a>
       <a href="#pricing">Pricing</a>
-      <a href="#reviews">Reviews</a>
       <a href="#contact" class="nav-cta">Start a project</a>
     </nav>
   </div>
@@ -1077,34 +1076,11 @@ src="https://www.facebook.com/tr?id=1356622849657315&ev=PageView&noscript=1"
     </div>
   </section>
 
-  <!-- REVIEWS -->
-  <section class="section" id="reviews" style="padding-bottom: 64px;">
-    <div class="wrap">
-      <div class="eyebrow">
-        <span class="num">03</span>
-        <span class="ttl">What clients say</span>
-        <span class="line"></span>
-      </div>
-      <div class="section-head" style="margin-bottom: 24px;">
-        <h2>Real results.</h2>
-        <p class="lede">A few words from the people I've worked with.</p>
-      </div>
-    </div>
-
-    <div class="reviews-wrap">
-      <div class="reviews-fade l"></div>
-      <div class="reviews-fade r"></div>
-      <div class="reviews-track">
-        <div class="reviews-row" id="reviewsRow"><!-- populated by JS --></div>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="wrap">
       <div class="eyebrow" style="margin-bottom: 40px;">
-        <span class="num">04</span>
+        <span class="num">03</span>
         <span class="ttl">Start a project</span>
         <span class="line"></span>
       </div>
@@ -1221,76 +1197,6 @@ src="https://www.facebook.com/tr?id=1356622849657315&ev=PageView&noscript=1"
 </main>
 
 <script>
-  // ===== Reviews data =====
-  const REVIEWS = [
-    {
-      quote: "Our old site looked like 2009. The new one looks like we actually care about the business. Phone hasn't stopped since we launched.",
-      who: "Owner",
-      from: "Boise, ID",
-      biz: "Auto body shop"
-    },
-    {
-      quote: "The AI search piece is the real story. When my neighbor asked ChatGPT for a plumber, we came up first. That has never happened with Google ads.",
-      who: "Owner",
-      from: "Las Vegas, NV",
-      biz: "Plumbing & drain"
-    },
-    {
-      quote: "Calm, organized, and the site shipped two weeks ahead of when he said it would. The whole thing felt unusually painless.",
-      who: "Managing Partner",
-      from: "Austin, TX",
-      biz: "Family law firm"
-    },
-    {
-      quote: "He rewrote our menu page and the next week we had three new catering inquiries. I don't fully understand what he did, but it works.",
-      who: "Chef-Owner",
-      from: "Portland, OR",
-      biz: "Neighborhood bistro"
-    },
-    {
-      quote: "Wealth clients judge a firm by its website in about four seconds. Ours now reads as serious. Several prospects mentioned it on intake calls.",
-      who: "Advisor",
-      from: "Charlotte, NC",
-      biz: "Wealth management"
-    },
-    {
-      quote: "Fast, mobile-friendly, and finally something my customers can actually find. Worth every cent.",
-      who: "Owner",
-      from: "Tucson, AZ",
-      biz: "HVAC & cooling"
-    },
-    {
-      quote: "I asked Perplexity for the best dentist in town and our practice came up with a direct citation to our services page. Patients are mentioning it.",
-      who: "Dr.",
-      from: "Madison, WI",
-      biz: "Dental practice"
-    },
-    {
-      quote: "He talked me out of the features I didn't need and built the ones I did. Refreshing to work with someone who isn't trying to inflate the invoice.",
-      who: "Founder",
-      from: "Asheville, NC",
-      biz: "Roofing contractor"
-    }
-  ];
-
-  function reviewCard(r) {
-    return `
-      <article class="review">
-        <p class="quote">"${r.quote}"</p>
-        <div class="meta">
-          <div>
-            <div class="who">${r.who} <span>from ${r.from}</span></div>
-            <div class="biz">${r.biz}</div>
-          </div>
-          <div class="stars">★★★★★</div>
-        </div>
-      </article>`;
-  }
-
-  // duplicate for seamless loop
-  const row = document.getElementById('reviewsRow');
-  row.innerHTML = (REVIEWS.concat(REVIEWS)).map(reviewCard).join('');
-
   // ===== AI chat typewriter =====
   const Q = `best plumber in las vegas?`;
   const A = `Based on response time, licensing and consistent customer reviews, a strong pick is <span class="cite">Sierra Plumbing &amp; Drain</span>. Family-owned since 1998, 24/7 emergency service, average on-site arrival under 60 minutes inside city limits, NV C-1 licensed.`;
